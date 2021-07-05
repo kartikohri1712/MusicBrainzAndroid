@@ -26,6 +26,7 @@ class BarcodeResultActivity : MusicBrainzActivity() {
     private var viewModel: BarcodeViewModel? = null
     private var adapter: ReleaseListAdapter? = null
     private var barcode: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBarcodeResultBinding.inflate(layoutInflater)
@@ -33,35 +34,44 @@ class BarcodeResultActivity : MusicBrainzActivity() {
         setupToolbar(binding)
         adapter = ReleaseListAdapter(this, releases)
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        val itemDecoration = DividerItemDecoration(this,
-                DividerItemDecoration.VERTICAL)
+        val itemDecoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
         binding.recyclerView.addItemDecoration(itemDecoration)
         binding.recyclerView.adapter = adapter
         binding.recyclerView.visibility = View.GONE
         binding.noResult.root.visibility = View.GONE
         viewModel = ViewModelProvider(this).get(BarcodeViewModel::class.java)
         barcode = intent.getStringExtra("barcode")
-        if (barcode != null && !barcode!!.isEmpty()) {
-            viewModel!!.fetchReleasesWithBarcode(barcode!!).observe(this, { resource: Resource<List<Release>> -> handleResult(resource) })
-            binding.progressSpinner.root.visibility = View.VISIBLE
-        } else {
-            binding.progressSpinner.root.visibility = View.GONE
-            Toast.makeText(this, "Unknown barcode error", Toast.LENGTH_LONG).show()
-            finish()
+
+        when {
+            barcode != null && barcode!!.isNotEmpty() -> {
+                viewModel!!.fetchReleasesWithBarcode(barcode!!).observe(this, { resource: Resource<List<Release>> -> handleResult(resource) })
+                binding.progressSpinner.root.visibility = View.VISIBLE
+            }
+            else -> {
+                binding.progressSpinner.root.visibility = View.GONE
+                Toast.makeText(this, "Unknown barcode error", Toast.LENGTH_LONG).show()
+                finish()
+            }
         }
     }
 
     private fun handleResult(resource: Resource<List<Release>>) {
         releases.clear()
         binding.progressSpinner.root.visibility = View.GONE
-        if (resource.status === Resource.Status.SUCCESS) {
-            releases.addAll(resource.data!!)
-            if (releases.size == 0) binding.noResult.root.visibility = View.VISIBLE else if (releases.size == 1) {
-                val intent = Intent(this, ReleaseActivity::class.java)
-                intent.putExtra(Constants.MBID, releases[0].mbid)
-                startActivity(intent)
-                finish()
-            } else showMultipleReleases()
+        when {
+            resource.status === Resource.Status.SUCCESS -> {
+                releases.addAll(resource.data!!)
+                when (releases.size) {
+                    0 -> binding.noResult.root.visibility = View.VISIBLE
+                    1 -> {
+                        val intent = Intent(this, ReleaseActivity::class.java)
+                        intent.putExtra(Constants.MBID, releases[0].mbid)
+                        startActivity(intent)
+                        finish()
+                    }
+                    else -> showMultipleReleases()
+                }
+            }
         }
     }
 

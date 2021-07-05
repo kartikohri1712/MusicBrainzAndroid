@@ -15,6 +15,7 @@ import org.metabrainz.mobile.databinding.FragmentTaggerBinding
 import org.metabrainz.mobile.presentation.features.recording.RecordingActivity
 import org.metabrainz.mobile.util.Log.d
 import org.metabrainz.mobile.util.Resource
+import org.metabrainz.mobile.util.Utils
 import java.util.concurrent.TimeUnit
 
 class TaggerFragment : Fragment() {
@@ -73,8 +74,13 @@ class TaggerFragment : Fragment() {
             context?.startActivity(intent)
         }
 
+        binding.picard.setOnClickListener {
+           Utils.sendToPicard(requireContext(),releaseMBID!!)
+        }
+
         return binding.root
     }
+
 
     private fun setTaglibFetchedMetadata(metadata: AudioFile?) {
         binding.loadingAnimation.root.visibility = View.VISIBLE
@@ -90,6 +96,7 @@ class TaggerFragment : Fragment() {
         binding.albumArtLocal.visibility = View.GONE
         binding.albumArtServer.visibility = View.GONE
         binding.recordingButton.visibility = View.GONE
+        binding.picard.visibility = View.GONE
 
         reset()
 
@@ -129,6 +136,7 @@ class TaggerFragment : Fragment() {
         binding.albumArtLocal.visibility = View.VISIBLE
         binding.albumArtServer.visibility = View.VISIBLE
         binding.recordingButton.visibility = View.VISIBLE
+        binding.picard.visibility = View.VISIBLE
 
         for (tags in tagsList) {
             if (tags.newValue.isEmpty()) {

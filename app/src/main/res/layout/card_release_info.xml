@@ -40,9 +40,23 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@id/release_barcode"
+        app:layout_constraintBottom_toTopOf="@id/picard"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="Title" />
+
+    <TextView
+        android:id="@+id/picard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Send to Picard"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:drawablePadding="5dp"
+        android:textSize="16sp"
+        android:drawableStart="@drawable/ic_picard_logo_no_text"
+        app:layout_constraintBottom_toTopOf="@id/release_barcode" />
 
     <TextView
         android:id="@+id/release_barcode"

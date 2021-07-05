@@ -122,8 +122,20 @@
         android:textSize="18sp"
         app:backgroundTint="@color/dark_gray"
         app:cornerRadius="10dp"
+        app:layout_constraintEnd_toStartOf="@id/picard"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/picard"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintEnd_toStartOf="@id/overwrite_tags_button"
+        app:layout_constraintStart_toEndOf="@id/recording_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:padding="10dp"
+        android:src="@drawable/ic_picard_logo_no_text"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/overwrite_tags_button"
@@ -136,6 +148,7 @@
         android:textColor="@color/app_bg_light2"
         android:textSize="18sp"
         app:cornerRadius="10dp"
+        app:layout_constraintStart_toEndOf="@id/picard"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

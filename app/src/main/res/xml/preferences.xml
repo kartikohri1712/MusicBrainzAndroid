@@ -70,6 +70,25 @@
             android:summary="@string/settings_listenbrainz_spotify_summary" />
 
     </PreferenceCategory>
+    <PreferenceCategory
+        android:key="picard_settings"
+        android:title="Picard">
+
+        <EditTextPreference
+            android:key="ip_address"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:summary="Connect your device to the same network as the computer running Picard. Enter the IP address."
+            android:title="IP Address" />
+
+        <EditTextPreference
+            android:key="picard_port"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:summary="Find your Picard's port number on the bottom right. Usually it is 8000."
+            android:title="Port" />
+
+    </PreferenceCategory>
 
 
 </PreferenceScreen>

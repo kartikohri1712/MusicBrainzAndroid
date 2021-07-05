@@ -65,6 +65,7 @@ class App : Application() {
     companion object {
         val TAGGER_ROOT_DIRECTORY = Environment.getRootDirectory().toString() + "/Picard/"
         const val WEBSITE_BASE_URL = "https://musicbrainz.org/"
+        const val PICARD_OPENALBUM_URL = "http://%s:%s/openalbum?id=%s"
         var context: App? = null
         var robotoLight: Typeface? = null
             private set

@@ -13,6 +13,7 @@ import org.metabrainz.mobile.data.sources.api.entities.mbentity.Release
 import org.metabrainz.mobile.databinding.CardReleaseInfoBinding
 import org.metabrainz.mobile.presentation.features.base.MusicBrainzFragment
 import org.metabrainz.mobile.util.Resource
+import org.metabrainz.mobile.util.Utils
 import java.util.*
 
 class ReleaseInfoFragment : Fragment() {
@@ -21,6 +22,7 @@ class ReleaseInfoFragment : Fragment() {
 
     private lateinit var slideshowAdapter: CoverArtSlideshowAdapter
     private val urls = ArrayList<String>()
+    private var releaseMBID: String? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = CardReleaseInfoBinding.inflate(inflater, container, false)
@@ -29,6 +31,13 @@ class ReleaseInfoFragment : Fragment() {
         slideshowAdapter = CoverArtSlideshowAdapter(urls)
 
         binding!!.viewpagerSlideshow.adapter = slideshowAdapter
+
+        binding!!.picard.setOnClickListener {
+            if(releaseMBID!=null){
+                Utils.sendToPicard(requireContext(),releaseMBID!!)
+            }
+        }
+
         TabLayoutMediator(binding!!.tabIndicator, binding!!.viewpagerSlideshow) { _, _ -> }.attach()
         return binding!!.root
     }
@@ -50,6 +59,7 @@ class ReleaseInfoFragment : Fragment() {
             else{
                 binding!!.releaseBarcode.visibility = View.GONE
             }
+            releaseMBID = release.mbid
             if (release.status != null && release.status!!.isNotEmpty())
                 binding!!.releaseStatus.text = release.status
             if (release.textRepresentation != null && release.textRepresentation!!.language != null)
