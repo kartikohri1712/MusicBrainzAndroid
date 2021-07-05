@@ -5,6 +5,7 @@ import org.junit.Assert.assertEquals
 import org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder
 import org.metabrainz.mobile.data.sources.api.entities.WikiSummary
 import org.metabrainz.mobile.data.sources.api.entities.mbentity.*
+import org.metabrainz.mobile.data.sources.api.entities.mbentity.Collection
 import org.metabrainz.mobile.presentation.features.adapters.ResultItem
 
 object AssertionUtils {
@@ -34,7 +35,7 @@ object AssertionUtils {
         assertEquals(testArtist.sortName, artist.sortName)
         assertEquals(testArtist.gender, artist.gender)
         assertEquals(testArtist.type, artist.type)
-        if (testArtist.getReleases().size != 0) assertThat(
+        if (testArtist.getReleases().isNotEmpty()) assertThat(
             testArtist.getReleases(),
             containsInAnyOrder(artist.getReleases().toTypedArray())
         )
@@ -80,4 +81,23 @@ object AssertionUtils {
         assertEquals(testItem.primary, item.primary)
         assertEquals(testItem.secondary, item.secondary)
     }
+
+    fun checkCollectionDetailsAssertions(testCollectionDetails: ResultItem, collectionDetails: ResultItem) {
+        assertEquals(testCollectionDetails, collectionDetails)
+        assertEquals(testCollectionDetails.name, collectionDetails.name)
+        assertEquals(testCollectionDetails.disambiguation, collectionDetails.disambiguation)
+        assertEquals(testCollectionDetails.name, collectionDetails.name)
+        assertEquals(testCollectionDetails.name, collectionDetails.name)
+    }
+
+    fun checkCollectionAssertions(testCollection: Collection, collection: Collection) {
+        assertEquals(testCollection, collection)
+        assertEquals(testCollection.mbid, collection.mbid)
+        assertEquals(testCollection.type, collection.type)
+        assertEquals(testCollection.name, collection.name)
+        assertEquals(testCollection.count, collection.count)
+        assertEquals(testCollection.editor, collection.editor)
+        assertEquals(testCollection.entityType, collection.entityType)
+    }
+
 }

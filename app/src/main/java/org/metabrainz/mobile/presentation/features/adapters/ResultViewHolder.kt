@@ -16,7 +16,7 @@ class ResultViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     }
 
     private fun setViewVisibility(text: String?, view: TextView) {
-        if (text != null && !text.isEmpty() && !text.equals("null", ignoreCase = true)) {
+        if (text != null && text.isNotEmpty() && !text.equals("null", ignoreCase = true)) {
             view.visibility = View.VISIBLE
             view.text = text
         } else view.visibility = View.GONE

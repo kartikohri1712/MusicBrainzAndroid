@@ -11,8 +11,7 @@ import org.metabrainz.mobile.presentation.features.adapters.ResultItemUtils
 
 class SearchPagingSource(val entity: MBEntityType, val query: String) : PagingSource<Int, ResultItem>() {
 
-    private val service = MusicBrainzServiceGenerator
-            .createService(SearchService::class.java, true)
+    private val service = MusicBrainzServiceGenerator.createService(SearchService::class.java, true)
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ResultItem> {
         val pageSize: Int = params.loadSize
@@ -29,10 +28,10 @@ class SearchPagingSource(val entity: MBEntityType, val query: String) : PagingSo
             // itemsAfter is required to be at least otherwise the current page will be not loaded
 
             LoadResult.Page(
-                    data = ResultItemUtils.getJSONResponseAsResultItemList(response, entity),
-                    prevKey = null,
-                    nextKey = pageSize + offset,
-                    itemsAfter = itemsAfter
+                data = ResultItemUtils.getJSONResponseAsResultItemList(response, entity),
+                prevKey = null,
+                nextKey = pageSize + offset,
+                itemsAfter = itemsAfter
             )
         } catch (e: Exception) {
             e.printStackTrace()

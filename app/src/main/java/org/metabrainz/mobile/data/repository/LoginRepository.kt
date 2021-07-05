@@ -1,47 +1,15 @@
 package org.metabrainz.mobile.data.repository
 
 import androidx.lifecycle.MutableLiveData
-import org.metabrainz.mobile.data.sources.api.LoginService
-import org.metabrainz.mobile.data.sources.api.MusicBrainzServiceGenerator
 import org.metabrainz.mobile.data.sources.api.entities.AccessToken
 import org.metabrainz.mobile.data.sources.api.entities.userdata.UserInfo
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-class LoginRepository @Inject constructor(private val service: LoginService) {
-    val accessTokenLiveData: MutableLiveData<AccessToken?> = MutableLiveData()
-    val userInfoLiveData: MutableLiveData<UserInfo?> = MutableLiveData()
-    fun fetchAccessToken(code: String?) {
-        service.getAccessToken(MusicBrainzServiceGenerator.AUTH_BASE_URL + "token",
-                code,
-                "authorization_code",
-                MusicBrainzServiceGenerator.CLIENT_ID,
-                MusicBrainzServiceGenerator.CLIENT_SECRET,
-                MusicBrainzServiceGenerator.OAUTH_REDIRECT_URI)!!.enqueue(object : Callback<AccessToken?> {
-                    override fun onResponse(call: Call<AccessToken?>, response: Response<AccessToken?>) {
-                        val token = response.body()
-                        accessTokenLiveData.value = token
-                    }
+interface LoginRepository {
 
-                    override fun onFailure(call: Call<AccessToken?>, t: Throwable) {
-                        t.printStackTrace()
-                    }
-                })
-    }
+    val accessTokenLiveData: MutableLiveData<AccessToken?>
+    val userInfoLiveData: MutableLiveData<UserInfo?>
 
-    fun fetchUserInfo() {
-        service.userInfo!!.enqueue(object : Callback<UserInfo?> {
-            override fun onResponse(call: Call<UserInfo?>, response: Response<UserInfo?>) {
-                val info = response.body()
-                userInfoLiveData.postValue(info)
-            }
+    fun fetchAccessToken(code: String?)
 
-            override fun onFailure(call: Call<UserInfo?>, t: Throwable) {}
-        })
-    }
-
+    fun fetchUserInfo()
 }

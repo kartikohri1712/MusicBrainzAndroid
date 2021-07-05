@@ -4,6 +4,8 @@ import org.junit.Assert.fail
 import org.metabrainz.mobile.data.sources.api.entities.ArtistCredit
 import org.metabrainz.mobile.data.sources.api.entities.WikiSummary
 import org.metabrainz.mobile.data.sources.api.entities.mbentity.*
+import org.metabrainz.mobile.data.sources.api.entities.mbentity.Collection
+import org.metabrainz.mobile.presentation.features.adapters.ResultItem
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
@@ -183,5 +185,27 @@ object EntityTestUtils {
             testArtistCredit.artist = testArtist
             testRecording.artistCredits = testArtistCredits
             return testRecording
+        }
+
+
+    val testCollectionMBID: String
+        get() = "a691377c-6949-44cb-8a10-9696178cca18"
+
+    val testCollection: Collection
+        get() {
+            val MBID = testCollectionMBID
+            val testCollection = Collection()
+            testCollection.mbid = MBID
+            testCollection.type = "Release"
+            testCollection.name = "Rock and Roll"
+            testCollection.count = 1
+            testCollection.editor = "akshaaatt"
+            testCollection.entityType = "release"
+            return testCollection
+        }
+
+    val testCollectionDetails: ResultItem
+        get() {
+            TODO()
         }
 }
