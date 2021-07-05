@@ -14,7 +14,7 @@ object UserPreferences {
     private const val PREFERENCE_GET_PRIVATE_COLLECTIONS = "private_collections"
     private const val PREFERENCE_RATINGS_TAGS = "ratings_tags"
     private const val PREFERENCE_SYSTEM_LANGUAGE = "use_english"
-    private const val PREFERENCE_ONBOARDING = "show_onboarding"
+    private const val PREFERENCE_ONBOARDING = "onboarding"
     private const val PREFERENCE_ADVANCED = "advanced_features"
     private val preferences = PreferenceManager.getDefaultSharedPreferences(App.context)
 

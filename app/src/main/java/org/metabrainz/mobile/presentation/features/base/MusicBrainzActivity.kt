@@ -15,6 +15,7 @@ import org.metabrainz.mobile.presentation.Configuration
 import org.metabrainz.mobile.presentation.IntentFactory.getLogin
 import org.metabrainz.mobile.presentation.IntentFactory.getSettings
 import org.metabrainz.mobile.presentation.UserPreferences.systemLanguagePreference
+import org.metabrainz.mobile.presentation.features.onboarding.FeaturesActivity
 import org.metabrainz.mobile.util.Utils.changeLanguage
 import org.metabrainz.mobile.util.Utils.emailIntent
 import java.util.*
@@ -38,28 +39,26 @@ abstract class MusicBrainzActivity : AppCompatActivity() {
         when (item.itemId) {
             android.R.id.home -> {
                 onBackPressed()
-                return true
             }
             R.id.menu_preferences -> {
                 startActivity(getSettings(applicationContext))
-                return true
             }
             R.id.menu_feedback -> {
                 sendFeedback()
-                return true
+            }
+            R.id.menu_features -> {
+                startActivity(Intent(this,FeaturesActivity::class.java))
             }
             R.id.menu_login -> {
                 startActivity(getLogin(applicationContext))
-                return true
             }
             R.id.menu_open_website -> {
                 val intent = Intent(Intent.ACTION_VIEW)
                 intent.data = getBrowserURI()
                 startActivity(intent)
-                return true
             }
-            else -> return super.onOptionsItemSelected(item)
         }
+        return false
     }
 
     override fun attachBaseContext(newBase: Context) {

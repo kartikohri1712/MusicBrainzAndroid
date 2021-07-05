@@ -20,21 +20,27 @@ import org.metabrainz.mobile.presentation.UserPreferences.preferenceListeningEna
 import java.util.*
 
 class SettingsActivity : AppCompatActivity() {
+
     var preferenceChangeListener: Preference.OnPreferenceChangeListener? = null
+
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityPreferencesBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         val toolbarBinding = LayoutToolbarBinding.bind(binding.root)
+
         setSupportActionBar(toolbarBinding.toolbar)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.settings_container, SettingsFragment())
                 .commit()
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) ACTION_NOTIFICATION_LISTENER_SETTINGS = Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1){
+            ACTION_NOTIFICATION_LISTENER_SETTINGS = Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS
+        }
+
         preferenceChangeListener = Preference.OnPreferenceChangeListener { preference: Preference, newValue: Any ->
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 if (preference.key == PREFERENCE_LISTENING_ENABLED) {
@@ -67,11 +73,13 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) {
-            onBackPressed()
-            return true
+        return when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
-        return super.onOptionsItemSelected(item)
     }
 
     companion object {

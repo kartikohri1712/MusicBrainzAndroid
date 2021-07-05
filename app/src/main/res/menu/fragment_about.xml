@@ -4,6 +4,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/menu_features"
+        android:icon="@drawable/ic_party"
+        android:title="Features"
+        app:showAsAction="always|withText" />
+
+    <item
         android:id="@+id/menu_feedback"
         android:icon="@drawable/ic_feedback"
         android:title="@string/action_feedback"

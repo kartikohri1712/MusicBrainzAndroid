@@ -9,11 +9,6 @@
         <item name="android:minHeight">@dimen/vertical_minspace</item>
     </style>
 
-    <style name="HomeTextArea" parent="VerticalMin">
-        <item name="background">@color/main_fg</item>
-        <item name="android:padding">@dimen/std_pad</item>
-    </style>
-
     <!-- Text -->
     <style name="BigRoboto" parent="MatchWidth">
         <item name="android:textSize">@dimen/text_size_xl</item>
@@ -23,11 +18,12 @@
     <style name="TextBody" parent="MatchWidth">
         <item name="android:textSize">@dimen/text_size_medium</item>
         <item name="android:autoLink">web</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="VersionText" parent="MatchWidth">
         <item name="android:textSize">@dimen/text_size_small</item>
-        <item name="android:textColor">@color/mb_purple_dark</item>
+        <item name="android:textColor">@color/light_blue</item>
     </style>
 
     <style name="WelcomeText" parent="Wrap">

@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://github.com/ArmynC/ArminC-AutoExec/archive/master.zip"><img src="https://github.com/metabrainz/metabrainz-logos/blob/master/logos/MusicBrainz/SVG/MusicBrainz_logo.svg" alt="MusicBrainz Android"></a>
+  <a href="https://github.com/metabrainz/musicbrainz-android/archive/master.zip"><img src="https://github.com/metabrainz/metabrainz-logos/blob/master/logos/MusicBrainz/SVG/MusicBrainz_logo.svg" alt="MusicBrainz Android"></a>
 </h1>
 
 <h4 align="center">MusicBrainz Android</h4>
@@ -8,13 +8,13 @@
 <p align="center">
     <a href="https://github.com/metabrainz/musicbrainz-android/commits/master">
     <img src="https://img.shields.io/github/last-commit/metabrainz/musicbrainz-android.svg?style=flat-square&logo=github&logoColor=white"
-         alt="GitHub last commit">
+         alt="GitHub last commit"></a>
     <a href="https://github.com/metabrainz/musicbrainz-android/issues">
     <img src="https://img.shields.io/github/issues-raw/metabrainz/musicbrainz-android.svg?style=flat-square&logo=github&logoColor=white"
-         alt="GitHub issues">
+         alt="GitHub issues"></a>
     <a href="https://github.com/metabrainz/musicbrainz-android/pulls">
     <img src="https://img.shields.io/github/issues-pr-raw/metabrainz/musicbrainz-android.svg?style=flat-square&logo=github&logoColor=white"
-         alt="GitHub pull requests">
+         alt="GitHub pull requests"></a>
 </p>
       
 <p align="center">

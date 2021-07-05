@@ -2,8 +2,6 @@ package org.metabrainz.mobile.presentation.features.splash_screen
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.Window
-import android.view.WindowManager
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
@@ -14,7 +12,7 @@ import kotlinx.coroutines.launch
 import org.metabrainz.mobile.R
 import org.metabrainz.mobile.presentation.UserPreferences
 import org.metabrainz.mobile.presentation.features.dashboard.DashboardActivity
-import org.metabrainz.mobile.presentation.features.onboarding.AllowMe
+import org.metabrainz.mobile.presentation.features.onboarding.FeaturesActivity
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,7 +28,7 @@ class SplashActivity : AppCompatActivity() {
                 startActivity(Intent(this@SplashActivity, DashboardActivity::class.java))
             }
             else {
-                startActivity(Intent(this@SplashActivity, AllowMe::class.java))
+                startActivity(Intent(this@SplashActivity, FeaturesActivity::class.java))
             }
             finish()
         }
