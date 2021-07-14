@@ -118,18 +118,6 @@
             android:name=".presentation.features.dashboard.DonateActivity"
             android:label="@string/donate_title" />
         <activity
-            android:name=".presentation.features.search.SearchResultsActivity"
-            android:launchMode="singleTop"
-            android:theme="@style/AppThemeGrayScale">
-            <intent-filter>
-                <action android:name="android.intent.action.SEARCH" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.app.searchable"
-                android:resource="@xml/searchable" />
-        </activity>
-        <activity
             android:name=".presentation.features.release.ReleaseActivity"
             android:label="@string/release_title"
             android:theme="@style/AppThemeGrayScale" />

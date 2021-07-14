@@ -15,8 +15,7 @@ class ResultPagingAdapter(diffCallback: DiffUtil.ItemCallback<ResultItem>,
                           private val entity: MBEntityType) : PagingDataAdapter<ResultItem, ResultViewHolder>(diffCallback) {
     private var lastPosition = -1
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ResultViewHolder {
-        val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_result, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_result, parent, false)
         return ResultViewHolder(view)
     }
 
@@ -28,8 +27,7 @@ class ResultPagingAdapter(diffCallback: DiffUtil.ItemCallback<ResultItem>,
 
     private fun setAnimation(viewToAnimate: View, position: Int) {
         if (position > lastPosition) {
-            val animation = AnimationUtils
-                    .loadAnimation(viewToAnimate.context, android.R.anim.slide_in_left)
+            val animation = AnimationUtils.loadAnimation(viewToAnimate.context, android.R.anim.slide_in_left)
             viewToAnimate.startAnimation(animation)
             lastPosition = position
         }

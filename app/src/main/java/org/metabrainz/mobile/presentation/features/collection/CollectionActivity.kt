@@ -31,6 +31,7 @@ class CollectionActivity : MusicBrainzActivity() {
     private var viewModel: CollectionViewModel? = null
     private var adapter: CollectionListAdapter? = null
     private var collections: MutableList<Collection>? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCollectionBinding.inflate(layoutInflater)

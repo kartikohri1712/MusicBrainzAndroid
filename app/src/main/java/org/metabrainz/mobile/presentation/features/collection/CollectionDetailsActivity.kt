@@ -29,6 +29,7 @@ class CollectionDetailsActivity : MusicBrainzActivity() {
     private var id: String? = null
     private var entity: MBEntityType? = null
     private var collectionResults: MutableList<ResultItem>? = null
+
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCollectionDetailsBinding.inflate(layoutInflater)

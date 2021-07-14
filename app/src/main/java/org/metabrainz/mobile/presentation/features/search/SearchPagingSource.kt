@@ -1,4 +1,4 @@
-package org.metabrainz.mobile.data.repository
+package org.metabrainz.mobile.presentation.features.search
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
@@ -11,8 +11,7 @@ import org.metabrainz.mobile.presentation.features.adapters.ResultItemUtils
 
 class SearchPagingSource(val entity: MBEntityType, val query: String) : PagingSource<Int, ResultItem>() {
 
-    private val service = MusicBrainzServiceGenerator
-            .createService(SearchService::class.java, true)
+    private val service = MusicBrainzServiceGenerator.createService(SearchService::class.java, true)
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ResultItem> {
         val pageSize: Int = params.loadSize

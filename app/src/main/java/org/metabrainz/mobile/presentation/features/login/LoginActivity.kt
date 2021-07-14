@@ -1,6 +1,7 @@
 package org.metabrainz.mobile.presentation.features.login
 
 import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
@@ -24,6 +25,7 @@ class LoginActivity : MusicBrainzActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
+        supportActionBar!!.setBackgroundDrawable(ColorDrawable(resources.getColor(R.color.app_bg)))
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         loginViewModel!!.accessTokenLiveData!!.observe(this, { accessToken: AccessToken? -> saveOAuthToken(accessToken) })

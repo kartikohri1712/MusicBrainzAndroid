@@ -3,6 +3,7 @@ package org.metabrainz.mobile.presentation.features.base
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.view.Menu
 import android.view.MenuItem
@@ -31,7 +32,7 @@ abstract class MusicBrainzActivity : AppCompatActivity() {
     protected fun setupToolbar(binding: ViewBinding) {
         val toolbarBinding = LayoutToolbarBinding.bind(binding.root)
         setSupportActionBar(toolbarBinding.toolbar)
-        Objects.requireNonNull(supportActionBar)!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

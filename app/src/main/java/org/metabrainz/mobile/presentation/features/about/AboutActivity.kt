@@ -1,5 +1,6 @@
 package org.metabrainz.mobile.presentation.features.about
 
+import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
@@ -14,6 +15,7 @@ class AboutActivity : MusicBrainzActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAboutBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
+        supportActionBar!!.setBackgroundDrawable(ColorDrawable(resources.getColor(R.color.app_bg)))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 

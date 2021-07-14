@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <style name="Activity" parent="Match">
-        <item name="background">@drawable/background</item>
-    </style>
-
     <style name="VerticalMin" parent="MatchWidth">
         <item name="android:minHeight">@dimen/vertical_minspace</item>
     </style>
